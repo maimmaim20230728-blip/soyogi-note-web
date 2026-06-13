@@ -24,26 +24,55 @@
 
 html, body {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
   color: var(--text);
-  background-color: var(--bg);
   font-size: 16px;
   line-height: 1.6;
 }
 
 body {
+  background: linear-gradient(135deg, #f3ecd9 0%, #e8d8b8 100%);
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #app {
   width: 100%;
-  max-width: 480px;
-  min-height: 100vh;
+  max-width: 450px;
+  height: 100vh;
+  max-height: 900px;
+  aspect-ratio: 9 / 16;
   background: var(--bg);
   position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-bottom: 24px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0,0,0,0.04);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 480px) {
+  #app {
+    border-radius: 32px;
+    height: 94vh;
+  }
+}
+
+@media (max-width: 479px) {
+  body {
+    background: var(--bg);
+  }
+  #app {
+    max-height: none;
+    height: 100vh;
+    aspect-ratio: auto;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
 
 /* ヘッダー */

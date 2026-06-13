@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>そよぎノート | Soyogi Note</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#81C784">
+  <meta name="description" content="今日の気分を、そっと記録するノート">
+
+  <!-- iOS PWA support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="そよぎノート">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ===== ホーム画面 ===== -->
+    <header class="app-bar" id="app-bar">
+      <button class="icon-btn" id="back-btn" style="visibility:hidden;" aria-label="Back">‹</button>
+      <div class="title" id="app-title">🌿 そよぎノート</div>
+      <button class="icon-btn" id="open-calendar" aria-label="Calendar">
+        <svg class="calendar-icon-svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+      </button>
+    </header>
+
+    <!-- ホームビュー -->
+    <section class="view active" id="view-home">
+      <div class="lang-toggle">
+        <button class="lang-chip active" data-lang="ja">🇯🇵 日本語</button>
+        <button class="lang-chip" data-lang="en">🌐 English</button>
+      </div>
+
+      <div class="greeting" id="greeting">こんにちは。</div>
+      <div class="heading" id="heading-q">今日の気分はどう？</div>
+
+      <!-- 記録モード -->
+      <div id="record-mode">
+        <div class="mood-selector" id="mood-selector">
+          <button class="mood-option" data-score="5">
+            <div class="mood-circle score-5"></div>
+            <div class="mood-label" data-i18n-key="mood-5">まあ良い</div>
+          </button>
+          <button class="mood-option" data-score="4">
+            <div class="mood-circle score-4"></div>
+            <div class="mood-label" data-i18n-key="mood-4">普通</div>
+          </button>
+          <button class="mood-option" data-score="3">
+            <div class="mood-circle score-3"></div>
+            <div class="mood-label" data-i18n-key="mood-3">しんどい</div>
+          </button>
+          <button class="mood-option" data-score="2">
+            <div class="mood-circle score-2"></div>
+            <div class="mood-label" data-i18n-key="mood-2">つらい</div>
+          </button>
+          <button class="mood-option" data-score="1">
+            <div class="mood-circle score-1"></div>
+            <div class="mood-label" data-i18n-key="mood-1">限界</div>
+          </button>
+        </div>
+
+        <textarea class="memo-input" id="memo-input" maxlength="500" placeholder="ひとこと（書かなくてもOK）"></textarea>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="save-btn" disabled>
+            <span>📝</span><span id="save-label">きろくする</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 記録完了モード -->
+      <div id="recorded-mode" style="display:none;">
+        <div class="recorded-box">
+          <div class="big-circle" id="recorded-circle"></div>
+          <div class="label" id="recorded-label">きろくした！</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-outline" id="reset-btn">もう一度記録する</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="nav-grid">
+        <button class="nav-btn" id="nav-calendar">
+          <span class="emoji">📅</span>
+          <span class="nav-label" data-i18n-key="nav-calendar">きろくを見る</span>
+        </button>
+        <button class="nav-btn" id="nav-breathing">
+          <span class="emoji">🌬️</span>
+          <span class="nav-label" data-i18n-key="nav-breathing">深呼吸する</span>
+        </button>
+      </div>
+      <div class="nav-grid">
+        <button class="nav-btn" id="nav-note">
+          <span class="emoji">📝</span>
+          <span class="nav-label" data-i18n-key="nav-note">公式noteを読む</span>
+        </button>
+        <button class="nav-btn" id="nav-art">
+          <span class="emoji">🎨</span>
+          <span class="nav-label" data-i18n-key="nav-art">絵を眺める</span>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+      <div class="footer-link" id="soyogi-link">困ったときは → そよぎに話してみる 🌿</div>
+    </section>
+
+    <!-- ===== カレンダー画面 ===== -->
+    <section class="view" id="view-calendar">
+      <div class="cal-header">
+        <button class="cal-nav" id="cal-prev">‹</button>
+        <div class="cal-title" id="cal-title">2026年6月</div>
+        <button class="cal-nav" id="cal-next">›</button>
+      </div>
+      <div class="cal-grid" id="cal-weekdays">
+        <div class="cal-weekday">日</div>
+        <div class="cal-weekday">月</div>
+        <div class="cal-weekday">火</div>
+        <div class="cal-weekday">水</div>
+        <div class="cal-weekday">木</div>
+        <div class="cal-weekday">金</div>
+        <div class="cal-weekday">土</div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div id="cal-detail-container"></div>
+    </section>
+
+    <!-- ===== 深呼吸画面 ===== -->
+    <section class="view" id="view-breathing">
+      <div class="breathing-wrap" id="breathing-select">
+        <div class="heading" data-i18n-key="breathe-title">どんなふうに呼吸する？</div>
+        <div class="breathing-mode-grid">
+          <button class="breathing-mode" data-mode="478">
+            <div class="mode-title">4-7-8（ゆっくり眠るとき）</div>
+            <div class="mode-desc">息を吸って・止めて・長く吐く。</div>
+          </button>
+          <button class="breathing-mode" data-mode="box">
+            <div class="mode-title">ボックス呼吸（落ち着きたいとき）</div>
+            <div class="mode-desc">4秒ずつ均等にゆっくり。</div>
+          </button>
+          <button class="breathing-mode" data-mode="simple">
+            <div class="mode-title">シンプル呼吸（やさしく整える）</div>
+            <div class="mode-desc">4秒吸って、4秒吐くだけ。</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="breathing-play" id="breathing-play" style="display:none;">
+        <div class="breathing-phase" id="breathing-phase">準備中…</div>
+        <div class="breathing-ball" id="breathing-ball"></div>
+        <button class="btn-outline" id="breathing-stop">やめる</button>
+      </div>
+    </section>
+
+    <!-- ===== 浮かんでくるモーダル ===== -->
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div class="modal" id="modal">
+        <div class="leaf">🌿</div>
+        <div class="modal-message" id="modal-message"></div>
+        <div id="modal-hotlines" style="display:none;"></div>
+        <div class="modal-actions" id="modal-actions"></div>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(e => console.warn('SW reg failed:', e));
+      });
+    }
+  </script>
+</body>
+</html>

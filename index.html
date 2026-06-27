@@ -155,10 +155,32 @@
         </div>
       </div>
 
+      <!-- 深呼吸：時間選択 -->
+      <div class="breathing-wrap" id="breathing-duration" style="display:none;">
+        <div class="heading" id="breathing-duration-title">どのくらいの時間にする？</div>
+        <div class="breathing-duration-grid">
+          <button class="breathing-min" data-min="1">1分</button>
+          <button class="breathing-min" data-min="3">3分</button>
+          <button class="breathing-min" data-min="5">5分</button>
+        </div>
+        <button class="btn-text" id="breathing-duration-back">もどる</button>
+      </div>
+
       <div class="breathing-play" id="breathing-play" style="display:none;">
         <div class="breathing-phase" id="breathing-phase">準備中…</div>
         <div class="breathing-ball" id="breathing-ball"></div>
+        <div class="breathing-remaining" id="breathing-remaining"></div>
         <button class="btn-outline" id="breathing-stop">やめる</button>
+      </div>
+
+      <!-- 深呼吸：完了 -->
+      <div class="breathing-finish" id="breathing-finish" style="display:none;">
+        <div class="finish-leaf">🌿</div>
+        <div class="finish-msg" id="breathing-finish-msg">お疲れさまでした。
+少しは落ち着かれましたか？</div>
+        <button class="btn-primary" id="breathing-finish-record">気分を記録する 📝</button>
+        <button class="btn-outline" id="breathing-finish-shelter">まだ心が苦しくてどうしようもない</button>
+        <button class="btn-text" id="breathing-finish-close">とじる</button>
       </div>
     </section>
 

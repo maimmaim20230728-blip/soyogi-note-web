@@ -559,6 +559,53 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   font-weight: bold;
   min-height: 28px;
 }
+/* 深呼吸：時間選択 */
+.breathing-duration-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0 8px;
+}
+.breathing-min {
+  flex: 1;
+  max-width: 110px;
+  padding: 18px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--main);
+  background: white;
+  border: 1.5px solid rgba(129, 199, 132, 0.5);
+  border-radius: 16px;
+  cursor: pointer;
+}
+.breathing-min:active { transform: translateY(1px); }
+/* 深呼吸：残り時間 */
+.breathing-remaining {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #9e9e9e;
+  min-height: 20px;
+}
+/* 深呼吸：完了画面 */
+.breathing-finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28px 8px 16px;
+  gap: 14px;
+}
+.breathing-finish .finish-leaf { font-size: 52px; }
+.breathing-finish .finish-msg {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-line;
+  margin-bottom: 8px;
+}
+.breathing-finish .btn-primary,
+.breathing-finish .btn-outline,
+.breathing-finish .btn-text { width: 100%; }
 
 /* 設定行 */
 .setting-row {

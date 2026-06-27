@@ -28,6 +28,11 @@ const I18N = {
     modeBoxDesc: '4秒ずつ均等にゆっくり。',
     modeSimpleTitle: 'シンプル呼吸（やさしく整える）',
     modeSimpleDesc: '4秒吸って、4秒吐くだけ。',
+    breatheDurationTitle: 'どのくらいの時間にする？',
+    breatheBack: 'もどる',
+    breatheFinishMsg: 'お疲れさまでした。\n少しは落ち着かれましたか？',
+    breatheFinishRecord: '気分を記録する 📝',
+    breatheFinishShelter: 'まだ心が苦しくてどうしようもない',
     calTitle: (y, m) => `${y}年${m}月`,
     calWeekdays: ['日','月','火','水','木','金','土'],
     calNoRecord: 'この日の記録はないよ。\n記録しなくても大丈夫。',
@@ -71,6 +76,11 @@ const I18N = {
     modeBoxDesc: 'Equal 4-second counts, slow and steady.',
     modeSimpleTitle: 'Simple Breathing (gently settle)',
     modeSimpleDesc: 'Just inhale 4s, then exhale 4s.',
+    breatheDurationTitle: 'How long?',
+    breatheBack: 'Back',
+    breatheFinishMsg: 'Thank you for taking that time.\nAre you feeling a little calmer?',
+    breatheFinishRecord: 'Record how you feel 📝',
+    breatheFinishShelter: 'My heart still aches and I don\'t know what to do',
     calTitle: (y, m) => `${y} / ${String(m).padStart(2,'0')}`,
     calWeekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
     calNoRecord: 'No record for this day.\nIt\'s okay to skip a day.',
@@ -267,6 +277,14 @@ function applyI18n() {
     if (titleEl) titleEl.textContent = t('mode' + suffix + 'Title');
     if (descEl) descEl.textContent = t('mode' + suffix + 'Desc');
   });
+  // breathing 時間選択・完了画面の多言語化
+  $('breathing-duration-title').textContent = t('breatheDurationTitle');
+  $('breathing-duration-back').textContent = t('breatheBack');
+  $$('.breathing-min').forEach(el => { el.textContent = isEn() ? `${el.dataset.min} min` : `${el.dataset.min}分`; });
+  $('breathing-finish-msg').textContent = t('breatheFinishMsg');
+  $('breathing-finish-record').textContent = t('breatheFinishRecord');
+  $('breathing-finish-shelter').textContent = t('breatheFinishShelter');
+  $('breathing-finish-close').textContent = t('modalClose');
   // 再描画
   if (currentView === 'calendar') renderCalendar();
 }
@@ -300,8 +318,7 @@ function showView(name) {
   if (name === 'calendar') renderCalendar();
   if (name === 'breathing') {
     stopBreathing();
-    $('breathing-select').style.display = '';
-    $('breathing-play').style.display = 'none';
+    showBreathingStep('select');
   }
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
@@ -598,13 +615,52 @@ const BREATHING_MODES = {
 };
 
 let breathingTimer = null;
+let breathingCountdown = null;
 let breathingActive = false;
+let breathingMode = null;
+let breathingDurationMin = 0;
+let breathingMsLeft = 0;
 
-function startBreathing(mode) {
-  $('breathing-select').style.display = 'none';
-  $('breathing-play').style.display = '';
+// 深呼吸の画面ステップ切替（select=呼吸法 / duration=時間 / play=実行 / finish=完了）
+function showBreathingStep(step) {
+  $('breathing-select').style.display = step === 'select' ? '' : 'none';
+  $('breathing-duration').style.display = step === 'duration' ? '' : 'none';
+  $('breathing-play').style.display = step === 'play' ? '' : 'none';
+  $('breathing-finish').style.display = step === 'finish' ? '' : 'none';
+}
+
+// step1: 呼吸法を選ぶ → 時間選択へ
+function chooseBreathingMode(mode) {
+  breathingMode = mode;
+  showBreathingStep('duration');
+}
+
+function clearBreathingTimers() {
+  if (breathingTimer) { clearTimeout(breathingTimer); breathingTimer = null; }
+  if (breathingCountdown) { clearInterval(breathingCountdown); breathingCountdown = null; }
+}
+
+function resetBall() {
+  const ball = $('breathing-ball');
+  ball.style.transition = 'none';
+  ball.style.transform = '';
+  ball.style.opacity = '';
+}
+
+function updateRemaining() {
+  const sec = Math.max(0, Math.ceil(breathingMsLeft / 1000));
+  const m = Math.floor(sec / 60);
+  const s = String(sec % 60).padStart(2, '0');
+  $('breathing-remaining').textContent = isEn() ? `${m}:${s} left` : `残り ${m}:${s}`;
+}
+
+// step2: 時間（分）を選んで開始
+function startBreathing(minutes) {
+  breathingDurationMin = minutes;
+  breathingMsLeft = minutes * 60 * 1000;
   breathingActive = true;
-  const seq = BREATHING_MODES[mode];
+  showBreathingStep('play');
+  const seq = BREATHING_MODES[breathingMode];
   let idx = 0;
   const ball = $('breathing-ball');
   const phase = $('breathing-phase');
@@ -613,6 +669,12 @@ function startBreathing(mode) {
   ball.style.transform = 'scale(0.6)';
   ball.style.opacity = '0.55';
   void ball.offsetWidth; // 強制リフロー：次のtransitionが必ず小さい状態から始まる
+  updateRemaining();
+  breathingCountdown = setInterval(() => {
+    breathingMsLeft -= 1000;
+    updateRemaining();
+    if (breathingMsLeft <= 0) finishBreathing();
+  }, 1000);
   function step() {
     if (!breathingActive) return;
     const [name, ms] = seq[idx % seq.length];
@@ -634,13 +696,21 @@ function startBreathing(mode) {
   step();
 }
 
+// 完走 → 完了画面（シェルター誘導は5分完走時のみ表示）
+function finishBreathing() {
+  if (!breathingActive) return;
+  breathingActive = false;
+  clearBreathingTimers();
+  resetBall();
+  $('breathing-finish-shelter').style.display = breathingDurationMin >= 5 ? '' : 'none';
+  showBreathingStep('finish');
+}
+
+// 途中でやめる
 function stopBreathing() {
   breathingActive = false;
-  if (breathingTimer) { clearTimeout(breathingTimer); breathingTimer = null; }
-  const ball = $('breathing-ball');
-  ball.style.transition = 'none';
-  ball.style.transform = '';
-  ball.style.opacity = '';
+  clearBreathingTimers();
+  resetBall();
 }
 
 // ===== イベント登録 =====
@@ -673,12 +743,16 @@ function bindEvents() {
   $('cal-prev').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() - 1); renderCalendar(); });
   $('cal-next').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() + 1); renderCalendar(); });
   // 深呼吸
-  $$('.breathing-mode').forEach(el => el.addEventListener('click', () => startBreathing(el.dataset.mode)));
+  $$('.breathing-mode').forEach(el => el.addEventListener('click', () => chooseBreathingMode(el.dataset.mode)));
+  $$('.breathing-min').forEach(el => el.addEventListener('click', () => startBreathing(Number(el.dataset.min))));
+  $('breathing-duration-back').addEventListener('click', () => showBreathingStep('select'));
   $('breathing-stop').addEventListener('click', () => {
     stopBreathing();
-    $('breathing-select').style.display = '';
-    $('breathing-play').style.display = 'none';
+    showBreathingStep('select');
   });
+  $('breathing-finish-record').addEventListener('click', () => showView('home'));
+  $('breathing-finish-shelter').addEventListener('click', () => window.open(isEn() ? 'https://findahelpline.com' : 'https://soyogi.hp.peraichi.com/shelter', '_blank', 'noopener'));
+  $('breathing-finish-close').addEventListener('click', () => showBreathingStep('select'));
   // モーダル背景クリックで閉じる
   $('modal-backdrop').addEventListener('click', (e) => {
     if (e.target === $('modal-backdrop')) closeModal();

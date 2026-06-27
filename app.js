@@ -22,6 +22,12 @@ const I18N = {
     breatheTitle: 'どんなふうに呼吸する？',
     breatheStop: 'やめる',
     phaseInhale: '吸う', phaseHold: '止める', phaseExhale: '吐く',
+    mode478Title: '4-7-8（ゆっくり眠るとき）',
+    mode478Desc: '息を吸って・止めて・長く吐く。',
+    modeBoxTitle: 'ボックス呼吸（落ち着きたいとき）',
+    modeBoxDesc: '4秒ずつ均等にゆっくり。',
+    modeSimpleTitle: 'シンプル呼吸（やさしく整える）',
+    modeSimpleDesc: '4秒吸って、4秒吐くだけ。',
     calTitle: (y, m) => `${y}年${m}月`,
     calWeekdays: ['日','月','火','水','木','金','土'],
     calNoRecord: 'この日の記録はないよ。\n記録しなくても大丈夫。',
@@ -59,6 +65,12 @@ const I18N = {
     breatheTitle: 'How would you like to breathe?',
     breatheStop: 'Stop',
     phaseInhale: 'Inhale', phaseHold: 'Hold', phaseExhale: 'Exhale',
+    mode478Title: '4-7-8 (for falling asleep)',
+    mode478Desc: 'Breathe in, hold, then exhale slowly.',
+    modeBoxTitle: 'Box Breathing (to calm down)',
+    modeBoxDesc: 'Equal 4-second counts, slow and steady.',
+    modeSimpleTitle: 'Simple Breathing (gently settle)',
+    modeSimpleDesc: 'Just inhale 4s, then exhale 4s.',
     calTitle: (y, m) => `${y} / ${String(m).padStart(2,'0')}`,
     calWeekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
     calNoRecord: 'No record for this day.\nIt\'s okay to skip a day.',
@@ -246,6 +258,15 @@ function applyI18n() {
   $$('#cal-weekdays .cal-weekday').forEach((el, i) => el.textContent = days[i]);
   // breathing stop button
   $('breathing-stop').textContent = t('breatheStop');
+  // breathing mode cards（モード選択カードの多言語化）
+  $$('.breathing-mode').forEach(card => {
+    const suffix = card.dataset.mode === '478' ? '478'
+      : (card.dataset.mode === 'box' ? 'Box' : 'Simple');
+    const titleEl = card.querySelector('.mode-title');
+    const descEl = card.querySelector('.mode-desc');
+    if (titleEl) titleEl.textContent = t('mode' + suffix + 'Title');
+    if (descEl) descEl.textContent = t('mode' + suffix + 'Desc');
+  });
   // 再描画
   if (currentView === 'calendar') renderCalendar();
 }
@@ -587,6 +608,11 @@ function startBreathing(mode) {
   let idx = 0;
   const ball = $('breathing-ball');
   const phase = $('breathing-phase');
+  // 開始時はしぼんだ小さい状態にしておく（最初の「吸う」で小→大に膨らむように）
+  ball.style.transition = 'none';
+  ball.style.transform = 'scale(0.6)';
+  ball.style.opacity = '0.55';
+  void ball.offsetWidth; // 強制リフロー：次のtransitionが必ず小さい状態から始まる
   function step() {
     if (!breathingActive) return;
     const [name, ms] = seq[idx % seq.length];

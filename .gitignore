@@ -1,0 +1,5 @@
+# 🔴 Firebase サービスアカウント鍵（秘密鍵を含む。絶対にコミット/公開しない）
+*firebase-adminsdk*.json
+
+# アイコン生成元の素材画像
+icons/*.jpg

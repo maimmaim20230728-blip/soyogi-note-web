@@ -1,4 +1,9 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjMzMzkzMTUsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHg2RGYyOTIyRjc4OUVmMTFmNjk3NDREMEZkYWZCNDhmN2VhNjRmYTExIn0",
+    "payload": "eyJkb21haW4iOiJzb3lvZ2ktbm90ZS13ZWIudmVyY2VsLmFwcCJ9",
+    "signature": "ppBrPEPFtI76iP9EkWkPpjzOkPlLRZMNp240k9aydXBMnQUBkvgnEok+j0AnqgV8JWBn3nL1MbtPPcqxE2Yejxw="
+  },
   "miniapp": {
     "version": "1",
     "name": "Soyogi Note",

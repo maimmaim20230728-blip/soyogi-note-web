@@ -44,8 +44,9 @@ const I18N = {
     laterBtn: '心の整理がついてから行けるかも…。',
     tsuraiMsg: 'おつらいことが続いたのですね。\n少しでもお気持ちを軽くできれば幸いです。\nもしよろしければ\nデジタルシェルターそよぎへ\nいらしてください。',
     okayNow: '今は大丈夫です。',
-    shindoiMsg: '最近しんどそうですね？\n疲れてはいませんか？\nもしお話ししたいこと、愚痴りたいことがあれば\nぜひデジタルシェルターそよぎへ\nいらしてみてくださいね。',
-    okayNowShort: '今は大丈夫',
+    // しんどい(ja)はFlutter版に統一（2026-07-15ヒロ判断: シェルターではなくHPの有料相談案内へ）
+    shindoiMsg: '最近しんどい日が続きますね。お疲れかと思います。\nもし、話したいことや相談事、愚痴などあれば有料ではありますが相談事業を行っています。\n一度ホームページを見ていただけると幸いです。お力になれるかもしれません。',
+    okayNowShort: 'まだ大丈夫です',
     mildMsg: '最近の調子はいかがでしょうか？\n可もなく不可もなくといったところで\nあればいいのですが、\nもし見えないストレスをためている場合は\n注意してお過ごしくださいね。\n有料でよろしければ相談事業も\n行っていますのでぜひこちらをお読みくださいませ。',
     mildRead: 'こちらを読む',
     mildOk: '心配ありません😊',
@@ -1472,10 +1473,11 @@ function showShinDoiDialog() {
   if (!isJa()) {
     openModal({ message: t('shindoiMsg'), actions: [{ label: t('okayNowShort'), kind: 'text' }] });
   } else {
+    // Flutter版に統一（2026-07-15ヒロ判断）: シェルターではなくHPの有料相談案内（/top）へ
     openModal({
       message: t('shindoiMsg'),
       actions: [
-        { label: t('shelterBtn'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/shelter', '_blank', 'noopener') },
+        { label: t('mildRead'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/top', '_blank', 'noopener') },
         { label: t('okayNowShort'), kind: 'text' },
       ],
     });

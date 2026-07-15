@@ -162,6 +162,9 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 /* 言語切替 */
 .lang-toggle {
   display: flex;
+  /* 🔴14言語化でチップが2→14個になったため折返し必須（無いと横にはみ出して
+     大半の言語が選択不能＋フォーカスで画面全体が横ズレする致命バグ） */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
   margin-bottom: 16px;

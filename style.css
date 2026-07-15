@@ -1,18 +1,58 @@
 /* そよぎノート Web版 — テーマ */
+/* ライト（クリーム色）の既定値。ダークは下の @media / body クラスで上書き。 */
 :root {
   --main: #81C784;
   --sub: #FFF3E0;
   --accent: #8B6914;
   --text: #424242;
   --bg: #FFFDE7;
+  --card: #FFFFFF;           /* カード・入力欄の面 */
+  --header-bg: #81C784;      /* ヘッダー（AppBar） */
+  --body-bg: linear-gradient(135deg, #f3ecd9 0%, #e8d8b8 100%); /* 外側の余白 */
+  --hotline-bg: rgba(255,255,255,0.7);
   --grey: #9E9E9E;
   --grey-light: #E0E0E0;
   --grey-border: #BDBDBD;
   --mood-1: #212121;
+  --mood-1-border: #212121;  /* 黒丸の縁（ダークでは明るいスレートに） */
   --mood-2: #9E9E9E;
   --mood-3: #FFFFFF;
   --mood-4: #FFF59D;
   --mood-5: #FFD700;
+}
+
+/* ダーク（深夜モード）の色。黒背景ではなく濃紺〜チャコール系で目に刺さらない。 */
+/* 端末がダークのとき既定でダーク。ただし body.theme-light で明示ライトを優先。 */
+@media (prefers-color-scheme: dark) {
+  body:not(.theme-light) {
+    --sub: #272E3B;
+    --accent: #D4B15A;
+    --text: #E6E8EC;
+    --bg: #161B26;
+    --card: #222834;
+    --header-bg: #2E5D3E;
+    --body-bg: #0E1118;
+    --hotline-bg: rgba(255,255,255,0.06);
+    --grey: #9AA0AA;
+    --grey-light: #3A4250;
+    --grey-border: #6B7280;
+    --mood-1-border: #9AA3B2;
+  }
+}
+/* 設定で「ダーク」を明示選択したときは端末設定に関係なくダーク。 */
+body.theme-dark {
+  --sub: #272E3B;
+  --accent: #D4B15A;
+  --text: #E6E8EC;
+  --bg: #161B26;
+  --card: #222834;
+  --header-bg: #2E5D3E;
+  --body-bg: #0E1118;
+  --hotline-bg: rgba(255,255,255,0.06);
+  --grey: #9AA0AA;
+  --grey-light: #3A4250;
+  --grey-border: #6B7280;
+  --mood-1-border: #9AA3B2;
 }
 
 * {
@@ -32,7 +72,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(135deg, #f3ecd9 0%, #e8d8b8 100%);
+  background: var(--body-bg);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -80,7 +120,7 @@ header.app-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--main);
+  background: var(--header-bg);
   color: white;
   padding: 14px 16px;
   position: sticky;
@@ -127,7 +167,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   margin-bottom: 16px;
 }
 .lang-chip {
-  background: white;
+  background: var(--card);
   border: 1.5px solid var(--main);
   color: var(--text);
   padding: 6px 14px;
@@ -190,13 +230,13 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   transform: scale(1.3);
   box-shadow: 0 0 12px rgba(0,0,0,0.18);
 }
-.mood-circle.score-1 { background: var(--mood-1); border-color: var(--mood-1); }
+.mood-circle.score-1 { background: var(--mood-1); border-color: var(--mood-1-border); }
 .mood-circle.score-2 { background: var(--mood-2); border-color: var(--mood-2); }
 .mood-circle.score-3 { background: var(--mood-3); border-color: var(--grey-border); }
 .mood-circle.score-4 { background: var(--mood-4); border-color: var(--mood-4); }
 .mood-circle.score-5 { background: var(--mood-5); border-color: var(--mood-5); }
 .mood-label {
-  font-size: 10px;
+  font-size: 13px;
   margin-top: 6px;
   color: var(--text);
 }
@@ -209,7 +249,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 .memo-input {
   width: 100%;
   min-height: 80px;
-  background: white;
+  background: var(--card);
   border: 1.5px solid rgba(129, 199, 132, 0.4);
   border-radius: 16px;
   padding: 12px 14px;
@@ -250,7 +290,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 }
 .btn-primary:active:not(:disabled) { transform: translateY(1px); }
 .btn-outline {
-  background: white;
+  background: var(--card);
   border: 1.5px solid var(--main);
   color: var(--main);
   border-radius: 24px;
@@ -310,7 +350,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   margin-bottom: 12px;
 }
 .nav-btn {
-  background: white;
+  background: var(--card);
   border: 1.5px solid rgba(129, 199, 132, 0.4);
   border-radius: 18px;
   padding: 14px 12px;
@@ -378,7 +418,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 
 /* ホットライン表 */
 .hotlines {
-  background: rgba(255,255,255,0.7);
+  background: var(--hotline-bg);
   border-radius: 12px;
   padding: 10px 14px;
   margin-top: 14px;
@@ -392,7 +432,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 }
 .hotline-row .country { color: var(--text); }
 .hotline-row .num { font-weight: bold; color: var(--text); text-align: right; }
-.hotline-row .note { font-size: 10px; color: var(--text); display: block; }
+.hotline-row .note { font-size: 13px; color: var(--text); display: block; }
 
 /* カレンダー画面 */
 .cal-header {
@@ -438,6 +478,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   justify-content: center;
   border-radius: 8px;
   border: 2px solid transparent;
+  background: transparent; /* button要素の既定の明るい背景を消す（ダークで露見するため） */
   cursor: pointer;
   padding: 2px;
 }
@@ -452,7 +493,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 }
 .cal-cell .cal-circle.empty { background: transparent; border-color: transparent; }
 .cal-cell .cal-day {
-  font-size: 10px;
+  font-size: 13px;
   margin-top: 1px;
   color: var(--text);
 }
@@ -460,7 +501,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
 
 .cal-detail {
   margin: 18px 16px 0;
-  background: white;
+  background: var(--card);
   border-radius: 18px;
   padding: 18px;
   box-shadow: 0 2px 12px rgba(129, 199, 132, 0.18);
@@ -517,7 +558,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   margin-top: 16px;
 }
 .breathing-mode {
-  background: white;
+  background: var(--card);
   border: 1.5px solid rgba(129, 199, 132, 0.4);
   border-radius: 18px;
   padding: 16px;
@@ -573,7 +614,7 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   font-size: 18px;
   font-weight: bold;
   color: var(--main);
-  background: white;
+  background: var(--card);
   border: 1.5px solid rgba(129, 199, 132, 0.5);
   border-radius: 16px;
   cursor: pointer;
@@ -624,3 +665,145 @@ header.app-bar .icon-btn:active { background: rgba(255,255,255,0.15); }
   height: 24px;
   fill: currentColor;
 }
+
+/* 記録カードのリスト表示・編集/削除ボタン */
+.cal-detail-list {
+  margin: 18px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cal-detail-list .cal-detail { margin: 0; }
+.cal-detail .cal-detail-info { flex: 1; min-width: 0; }
+.cal-detail-actions {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+  align-self: flex-start;
+}
+.card-icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 10px;
+}
+.card-icon-btn:active { background: rgba(0,0,0,0.05); }
+
+/* トグルスイッチ（大きめ文字） */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  flex: none;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--grey-light);
+  border-radius: 999px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.switch-slider::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.switch input:checked + .switch-slider { background: var(--main); }
+.switch input:checked + .switch-slider::before { transform: translateX(20px); }
+
+/* 編集モーダル */
+.modal .edit-title { font-weight: bold; margin-top: 0; }
+.modal .edit-mood-selector { margin: 18px 0 4px; }
+.modal .edit-mood-selector .mood-circle { width: 32px; height: 32px; }
+.modal #edit-memo { margin-top: 6px; margin-bottom: 4px; min-height: 70px; }
+.modal-actions.edit-actions { flex-direction: row; gap: 12px; }
+.modal-actions.edit-actions button { flex: 1; }
+
+/* 大きめ文字（設定でON・#app に big-font クラス付与） */
+#app.big-font .greeting { font-size: 22px; }
+#app.big-font .heading { font-size: 28px; }
+#app.big-font .mood-label { font-size: 17px; }
+#app.big-font .memo-input { font-size: 19px; }
+#app.big-font .btn-primary { font-size: 19px; }
+#app.big-font .btn-outline { font-size: 18px; }
+#app.big-font .btn-text { font-size: 18px; }
+#app.big-font .nav-btn .nav-label { font-size: 17px; }
+#app.big-font .nav-btn .emoji { font-size: 28px; }
+#app.big-font .recorded-box .label { font-size: 28px; }
+#app.big-font .footer-link { font-size: 18px; }
+#app.big-font .setting-label { font-size: 19px; }
+#app.big-font .modal .modal-message { font-size: 19px; }
+#app.big-font .modal-actions button { font-size: 17px; }
+#app.big-font .hotline-row { font-size: 16px; }
+#app.big-font .hotline-row .note { font-size: 13px; }
+#app.big-font .cal-title { font-size: 20px; }
+#app.big-font .cal-day { font-size: 15px; }
+#app.big-font .cal-weekday { font-size: 14px; }
+#app.big-font .cal-detail-label { font-size: 22px; }
+#app.big-font .cal-detail-memo { font-size: 19px; }
+#app.big-font .cal-detail-date { font-size: 15px; }
+#app.big-font .cal-empty { font-size: 17px; }
+#app.big-font .card-icon-btn { font-size: 22px; }
+#app.big-font .breathing-mode .mode-title { font-size: 20px; }
+#app.big-font .breathing-mode .mode-desc { font-size: 16px; }
+#app.big-font .breathing-phase { font-size: 25px; }
+#app.big-font .breathing-min { font-size: 22px; }
+#app.big-font .breathing-remaining { font-size: 18px; }
+#app.big-font .breathing-finish .finish-msg { font-size: 22px; }
+#app.big-font .mini-band-labels { font-size: 12px; }
+
+/* ダークモード選択（設定：端末にあわせる／ライト／ダーク） */
+.setting-block { padding: 12px 0; }
+.theme-seg { display: flex; gap: 8px; margin-top: 10px; }
+.theme-seg-btn {
+  flex: 1;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 13px;
+  font-family: inherit;
+  border-radius: 12px;
+  border: 1.5px solid rgba(129, 199, 132, 0.4);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.theme-seg-btn.active {
+  background: var(--main);
+  color: #fff;
+  border-color: var(--main);
+  font-weight: bold;
+}
+#app.big-font .theme-seg-btn { font-size: 16px; }
+
+/* 30日色帯（カレンダー上部のミニ振り返り。眺めるためのもの・タップなし） */
+.mini-band { padding: 12px 16px 4px; }
+.mini-band-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--grey);
+  margin-bottom: 6px;
+}
+.mini-band-row { display: flex; }
+.mini-band-cell { flex: 1; display: flex; justify-content: center; }
+.mini-band-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--grey-border);
+  box-sizing: border-box;
+}
+.mini-band-dot.empty { background: transparent; border-color: var(--grey-light); }

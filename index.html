@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>そよぎノート | Soyogi Note</title>
 
-  <!-- Farcaster Mini App 埋め込み（タイムラインで画像＋ボタンのカード・タップで起動） -->
-  <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://soyogi-note-web.vercel.app/icons/farcaster-embed.png","button":{"title":"🌿 Note / 記録","action":{"type":"launch_miniapp","name":"Soyogi Note","url":"https://soyogi-note-web.vercel.app/","splashImageUrl":"https://soyogi-note-web.vercel.app/icons/icon-512.png","splashBackgroundColor":"#81C784"}}}' />
-  <meta name="fc:frame" content='{"version":"1","imageUrl":"https://soyogi-note-web.vercel.app/icons/farcaster-embed.png","button":{"title":"🌿 Note / 記録","action":{"type":"launch_frame","name":"Soyogi Note","url":"https://soyogi-note-web.vercel.app/","splashImageUrl":"https://soyogi-note-web.vercel.app/icons/icon-512.png","splashBackgroundColor":"#81C784"}}}' />
+  <!-- Farcaster Mini App 埋め込み（タイムラインで画像＋ボタンのカードとして表示・タップで起動） -->
+  <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://maimmaim20230728-blip.github.io/soyogi-note-web/icons/farcaster-embed.png","button":{"title":"🌿 Note / 記録","action":{"type":"launch_miniapp","name":"Soyogi Note","url":"https://maimmaim20230728-blip.github.io/soyogi-note-web/","splashImageUrl":"https://maimmaim20230728-blip.github.io/soyogi-note-web/icons/icon-512.png","splashBackgroundColor":"#81C784"}}}' />
+  <meta name="fc:frame" content='{"version":"1","imageUrl":"https://maimmaim20230728-blip.github.io/soyogi-note-web/icons/farcaster-embed.png","button":{"title":"🌿 Note / 記録","action":{"type":"launch_frame","name":"Soyogi Note","url":"https://maimmaim20230728-blip.github.io/soyogi-note-web/","splashImageUrl":"https://maimmaim20230728-blip.github.io/soyogi-note-web/icons/icon-512.png","splashBackgroundColor":"#81C784"}}}' />
 
   <!-- PWA -->
   <link rel="manifest" href="./manifest.json">
@@ -39,10 +39,8 @@
 
     <!-- ホームビュー -->
     <section class="view active" id="view-home">
-      <div class="lang-toggle">
-        <button class="lang-chip active" data-lang="ja">🇯🇵 日本語</button>
-        <button class="lang-chip" data-lang="en">🌐 English</button>
-      </div>
+      <!-- 言語チップは app.js が I18N にある言語だけを動的に生成する（14言語対応） -->
+      <div class="lang-toggle" id="lang-toggle"></div>
 
       <div class="greeting" id="greeting">こんにちは。</div>
       <div class="heading" id="heading-q">今日の気分はどう？</div>
@@ -116,11 +114,30 @@
       </div>
 
       <div class="divider"></div>
+      <div class="setting-row">
+        <span class="setting-label" id="bigfont-label">大きめ文字</span>
+        <label class="switch">
+          <input type="checkbox" id="bigfont-toggle">
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+      <div class="setting-block">
+        <span class="setting-label" id="theme-label">🌙 ダークモード</span>
+        <div class="theme-seg" id="theme-seg">
+          <button class="theme-seg-btn" data-theme="system" id="theme-system">端末にあわせる</button>
+          <button class="theme-seg-btn" data-theme="light" id="theme-light">ライト</button>
+          <button class="theme-seg-btn" data-theme="dark" id="theme-dark">ダーク</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
       <div class="footer-link" id="soyogi-link">困ったときは → そよぎに話してみる 🌿</div>
     </section>
 
     <!-- ===== カレンダー画面 ===== -->
     <section class="view" id="view-calendar">
+      <!-- 直近30日の気分をそっと眺める色帯（今日が右端・眺めるためのもの） -->
+      <div class="mini-band" id="mini-band"></div>
       <div class="cal-header">
         <button class="cal-nav" id="cal-prev">‹</button>
         <div class="cal-title" id="cal-title">2026年6月</div>
@@ -198,6 +215,25 @@
       </div>
     </div>
 
+    <!-- ===== 記録の編集モーダル ===== -->
+    <div class="modal-backdrop" id="edit-backdrop">
+      <div class="modal">
+        <div class="modal-message edit-title" id="edit-title">きろくを 直す</div>
+        <div class="mood-selector edit-mood-selector" id="edit-mood-selector">
+          <button class="mood-option" data-score="5"><div class="mood-circle score-5"></div><div class="mood-label" data-i18n-key="mood-5">まあ良い</div></button>
+          <button class="mood-option" data-score="4"><div class="mood-circle score-4"></div><div class="mood-label" data-i18n-key="mood-4">普通</div></button>
+          <button class="mood-option" data-score="3"><div class="mood-circle score-3"></div><div class="mood-label" data-i18n-key="mood-3">しんどい</div></button>
+          <button class="mood-option" data-score="2"><div class="mood-circle score-2"></div><div class="mood-label" data-i18n-key="mood-2">つらい</div></button>
+          <button class="mood-option" data-score="1"><div class="mood-circle score-1"></div><div class="mood-label" data-i18n-key="mood-1">限界</div></button>
+        </div>
+        <textarea class="memo-input" id="edit-memo" maxlength="500"></textarea>
+        <div class="modal-actions edit-actions">
+          <button class="btn-outline" id="edit-cancel">やめる</button>
+          <button class="btn-primary" id="edit-save">ほぞん</button>
+        </div>
+      </div>
+    </div>
+
   </div>
   <script src="app.js"></script>
   <script>
@@ -207,14 +243,15 @@
       });
     }
   </script>
-  <!-- Farcaster Mini App SDK: 埋め込み(iframe/webview)時のみ esm.sh からSDKを読込み ready() 通知。通常ブラウザ/PWAでは読込まず軽さ維持。 -->
+  <!-- Farcaster Mini App SDK: 埋め込み表示(iframe/webview)時のみ esm.sh からSDKを読込み ready() を通知。
+       通常ブラウザ/PWAでは読み込まないので軽さ維持。 -->
   <script type="module">
     (async () => {
       if ((window.self !== window.top) || window.ReactNativeWebView) {
         try {
           const { sdk } = await import("https://esm.sh/@farcaster/miniapp-sdk");
           await sdk.actions.ready();
-        } catch (e) {}
+        } catch (e) { /* Farcaster外では何もしない */ }
       }
     })();
   </script>

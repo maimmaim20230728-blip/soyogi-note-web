@@ -1450,7 +1450,7 @@ function showKigenDialog() {
     openModal({
       message: t('kigenMsg'),
       actions: [
-        { label: t('shelterBtn'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/shelter', '_blank', 'noopener') },
+        { label: t('shelterBtn'), kind: 'primary', onClick: () => window.open('https://soudansoyogi.com/iriguchi-q8x3n7f2.html', '_blank', 'noopener') },
         { label: t('laterBtn'), kind: 'text' },
       ],
     });
@@ -1463,7 +1463,7 @@ function showTsuraiDialog() {
     openModal({
       message: t('tsuraiMsg'),
       actions: [
-        { label: t('shelterBtn'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/shelter', '_blank', 'noopener') },
+        { label: t('shelterBtn'), kind: 'primary', onClick: () => window.open('https://soudansoyogi.com/iriguchi-q8x3n7f2.html', '_blank', 'noopener') },
         { label: t('okayNow'), kind: 'text' },
       ],
     });
@@ -1477,7 +1477,7 @@ function showShinDoiDialog() {
     openModal({
       message: t('shindoiMsg'),
       actions: [
-        { label: t('mildRead'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/top', '_blank', 'noopener') },
+        { label: t('mildRead'), kind: 'primary', onClick: () => window.open('https://soudansoyogi.com/', '_blank', 'noopener') },
         { label: t('okayNowShort'), kind: 'text' },
       ],
     });
@@ -1490,7 +1490,7 @@ function showMildDialog() {
     openModal({
       message: t('mildMsg'),
       actions: [
-        { label: t('mildRead'), kind: 'primary', onClick: () => window.open('https://soyogi.hp.peraichi.com/top', '_blank', 'noopener') },
+        { label: t('mildRead'), kind: 'primary', onClick: () => window.open('https://soudansoyogi.com/', '_blank', 'noopener') },
         { label: t('mildOk'), kind: 'text' },
       ],
     });
@@ -1858,7 +1858,7 @@ function bindEvents() {
   $('nav-breathing').addEventListener('click', () => showView('breathing'));
   $('nav-note').addEventListener('click', () => window.open('https://note.com/soudan_soyogi', '_blank', 'noopener'));
   $('nav-art').addEventListener('click', () => window.open('https://www.maimartprojectcatalog.com/', '_blank', 'noopener'));
-  $('soyogi-link').addEventListener('click', () => window.open('https://soyogi.hp.peraichi.com/top', '_blank', 'noopener'));
+  $('soyogi-link').addEventListener('click', () => window.open('https://soudansoyogi.com/', '_blank', 'noopener'));
   // カレンダー操作
   $('cal-prev').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() - 1); renderCalendar(); });
   $('cal-next').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() + 1); renderCalendar(); });
@@ -1871,7 +1871,7 @@ function bindEvents() {
     showBreathingStep('select');
   });
   $('breathing-finish-record').addEventListener('click', () => showView('home'));
-  $('breathing-finish-shelter').addEventListener('click', () => window.open(isJa() ? 'https://soyogi.hp.peraichi.com/shelter' : 'https://findahelpline.com', '_blank', 'noopener'));
+  $('breathing-finish-shelter').addEventListener('click', () => window.open(isJa() ? 'https://soudansoyogi.com/iriguchi-q8x3n7f2.html' : 'https://findahelpline.com', '_blank', 'noopener'));
   $('breathing-finish-close').addEventListener('click', () => showBreathingStep('select'));
   // モーダル背景クリックで閉じる
   $('modal-backdrop').addEventListener('click', (e) => {

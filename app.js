@@ -1857,7 +1857,7 @@ function bindEvents() {
   $('nav-calendar').addEventListener('click', () => showView('calendar'));
   $('nav-breathing').addEventListener('click', () => showView('breathing'));
   $('nav-note').addEventListener('click', () => window.open('https://note.com/soudan_soyogi', '_blank', 'noopener'));
-  $('nav-art').addEventListener('click', () => window.open('https://www.maimartprojectcatalog.com/', '_blank', 'noopener'));
+  $('nav-art').addEventListener('click', () => window.open('https://maimartprojectcatalog.com/', '_blank', 'noopener'));
   $('soyogi-link').addEventListener('click', () => window.open('https://soudansoyogi.com/', '_blank', 'noopener'));
   // カレンダー操作
   $('cal-prev').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() - 1); renderCalendar(); });

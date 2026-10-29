@@ -71,6 +71,19 @@ const I18N = {
     edit: '編集',
     delete: '削除',
     hotlineTrust: '', // ホットライン下の一文（jaはホットライン非表示のため空）
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 バックアップ・引き継ぎ',
+    backupHint: 'バックアップファイルをGoogleドライブや\nLINEで保存しておくと、機種変更後に\n引き継ぐことができます。',
+    backupExportTitle: 'バックアップを書き出す',
+    backupImportTitle: 'バックアップから引き継ぐ',
+    backupImportConfirmMsg: 'バックアップファイルを選んでください。\n現在の記録に追加されます（上書きではありません）。',
+    backupCancel: 'キャンセル',
+    backupChooseFile: 'ファイルを選ぶ',
+    backupImportedMsg: '{n}件の記録をインポートしました',
+    backupImportFailed: 'ファイルの読み込みに失敗しました',
+    backupNoRecords: 'まだ記録がありません',
+    saveFailed: '保存できませんでした。\n端末の空き容量を確かめてから、もう一度お試しください。',
+    storageUnavailable: 'このブラウザでは記録の保存場所が使えませんでした。\nいまは記録が残りません。\nプライベートブラウズを切るか、別のブラウザで開いてみてください。',
   },
   en: {
     appTitle: '🌿 Soyogi Note',
@@ -141,6 +154,19 @@ const I18N = {
     edit: 'Edit',
     delete: 'Delete',
     hotlineTrust: 'Or talk to someone you trust.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Backup & Transfer',
+    backupHint: 'Keep the backup file in Google Drive or\na messaging app, and you can transfer\nyour records after switching devices.',
+    backupExportTitle: 'Export backup',
+    backupImportTitle: 'Import backup',
+    backupImportConfirmMsg: 'Choose a backup file.\nRecords will be added to your current ones (not overwritten).',
+    backupCancel: 'Cancel',
+    backupChooseFile: 'Choose file',
+    backupImportedMsg: 'Imported {n} records.',
+    backupImportFailed: 'Could not read the file.',
+    backupNoRecords: 'No records to back up yet.',
+    saveFailed: 'Couldn\'t save.\nPlease check your device\'s free space and try again.',
+    storageUnavailable: 'This browser couldn\'t open the place where your records are kept.\nYour records won\'t be saved for now.\nPlease turn off private browsing or try another browser.',
   },
   // ─────────────────────────────────────────────
   // 以下、12言語（2026-07-15 人手翻訳で注入・Flutter版と共通の翻訳表）。
@@ -215,6 +241,19 @@ const I18N = {
     edit: 'تعديل',
     delete: 'حذف',
     hotlineTrust: 'أو تحدّث مع شخص تثق به.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 النسخ الاحتياطي والنقل',
+    backupHint: 'إذا حفظت ملف النسخة الاحتياطية في Google Drive\nأو في تطبيق مراسلة، يمكنك نقل تسجيلاتك\nبعد تغيير الجهاز.',
+    backupExportTitle: 'تصدير نسخة احتياطية',
+    backupImportTitle: 'استيراد نسخة احتياطية',
+    backupImportConfirmMsg: 'اختر ملف النسخة الاحتياطية.\nستُضاف التسجيلات إلى تسجيلاتك الحالية (دون استبدالها).',
+    backupCancel: 'إلغاء',
+    backupChooseFile: 'اختيار ملف',
+    backupImportedMsg: 'تم استيراد {n} من التسجيلات.',
+    backupImportFailed: 'تعذّرت قراءة الملف.',
+    backupNoRecords: 'لا توجد تسجيلات بعد.',
+    saveFailed: 'تعذّر الحفظ.\nيُرجى التحقق من المساحة الفارغة في جهازك ثم المحاولة مرة أخرى.',
+    storageUnavailable: 'تعذّر على هذا المتصفح فتح مكان حفظ تسجيلاتك.\nلن تُحفظ التسجيلات الآن.\nيُرجى إيقاف التصفح الخاص أو تجربة متصفح آخر.',
   },
   bn: {
     appTitle: '🌿 Soyogi Note',
@@ -284,6 +323,19 @@ const I18N = {
     edit: 'সম্পাদনা',
     delete: 'মুছে ফেলা',
     hotlineTrust: 'অথবা বিশ্বাস করেন এমন কারও সঙ্গে কথা বলুন।',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 ব্যাকআপ ও স্থানান্তর',
+    backupHint: 'ব্যাকআপ ফাইলটি Google Drive বা কোনো\nমেসেজিং অ্যাপে রেখে দিলে, ফোন বদলের পরেও\nলেখাগুলো ফিরিয়ে আনতে পারবেন।',
+    backupExportTitle: 'ব্যাকআপ তৈরি করুন',
+    backupImportTitle: 'ব্যাকআপ থেকে ফিরিয়ে আনুন',
+    backupImportConfirmMsg: 'ব্যাকআপ ফাইলটি বেছে নিন।\nবর্তমান লেখার সঙ্গে যোগ হবে (মুছে যাবে না)।',
+    backupCancel: 'বাতিল',
+    backupChooseFile: 'ফাইল বেছে নিন',
+    backupImportedMsg: '{n}টি লেখা ইমপোর্ট হয়েছে।',
+    backupImportFailed: 'ফাইলটি পড়া যায়নি।',
+    backupNoRecords: 'এখনও কোনো লেখা নেই।',
+    saveFailed: 'সংরক্ষণ করা যায়নি।\nডিভাইসে খালি জায়গা আছে কি না দেখে আবার চেষ্টা করুন।',
+    storageUnavailable: 'এই ব্রাউজারে আপনার লেখা রাখার জায়গাটি খোলা যায়নি।\nএখন লেখা সংরক্ষিত হবে না।\nপ্রাইভেট ব্রাউজিং বন্ধ করুন বা অন্য ব্রাউজারে খুলে দেখুন।',
   },
   de: {
     appTitle: '🌿 Soyogi Note',
@@ -353,6 +405,19 @@ const I18N = {
     edit: 'Bearbeiten',
     delete: 'Löschen',
     hotlineTrust: 'Oder sprich mit jemandem, dem du vertraust.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Sicherung & Umzug',
+    backupHint: 'Wenn du die Sicherungsdatei in Google Drive\noder einer Messenger-App aufbewahrst, kannst du\ndeine Einträge nach einem Gerätewechsel übernehmen.',
+    backupExportTitle: 'Sicherung exportieren',
+    backupImportTitle: 'Aus Sicherung übernehmen',
+    backupImportConfirmMsg: 'Wähle eine Sicherungsdatei.\nDie Einträge werden zu den vorhandenen hinzugefügt (nichts wird überschrieben).',
+    backupCancel: 'Abbrechen',
+    backupChooseFile: 'Datei wählen',
+    backupImportedMsg: '{n} Einträge importiert.',
+    backupImportFailed: 'Die Datei konnte nicht gelesen werden.',
+    backupNoRecords: 'Noch keine Einträge vorhanden.',
+    saveFailed: 'Speichern hat nicht geklappt.\nBitte prüfe den freien Speicher deines Geräts und versuche es noch einmal.',
+    storageUnavailable: 'In diesem Browser ließ sich der Speicherort deiner Einträge nicht öffnen.\nEinträge werden gerade nicht gespeichert.\nBitte schalte das private Surfen aus oder versuche einen anderen Browser.',
   },
   es: {
     appTitle: '🌿 Soyogi Note',
@@ -422,6 +487,19 @@ const I18N = {
     edit: 'Editar',
     delete: 'Eliminar',
     hotlineTrust: 'O habla con alguien de confianza.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Copia de seguridad y traspaso',
+    backupHint: 'Guarda el archivo en Google Drive o en una\napp de mensajería y podrás recuperar tus\nregistros al cambiar de teléfono.',
+    backupExportTitle: 'Exportar copia de seguridad',
+    backupImportTitle: 'Importar copia de seguridad',
+    backupImportConfirmMsg: 'Elige un archivo de copia de seguridad.\nLos registros se añadirán a los actuales (no se sobrescriben).',
+    backupCancel: 'Cancelar',
+    backupChooseFile: 'Elegir archivo',
+    backupImportedMsg: 'Se importaron {n} registros.',
+    backupImportFailed: 'No se pudo leer el archivo.',
+    backupNoRecords: 'Aún no hay registros.',
+    saveFailed: 'No se pudo guardar.\nRevisa el espacio libre de tu dispositivo e inténtalo de nuevo.',
+    storageUnavailable: 'Este navegador no pudo abrir el lugar donde se guardan tus registros.\nPor ahora no se guardarán.\nDesactiva la navegación privada o prueba con otro navegador.',
   },
   fr: {
     appTitle: '🌿 Soyogi Note',
@@ -491,6 +569,19 @@ const I18N = {
     edit: 'Modifier',
     delete: 'Supprimer',
     hotlineTrust: 'Ou parle à quelqu’un en qui tu as confiance.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Sauvegarde et transfert',
+    backupHint: 'Garde le fichier de sauvegarde sur Google Drive\nou une appli de messagerie : tu pourras retrouver\ntes notes après un changement d’appareil.',
+    backupExportTitle: 'Exporter la sauvegarde',
+    backupImportTitle: 'Importer une sauvegarde',
+    backupImportConfirmMsg: 'Choisis un fichier de sauvegarde.\nLes notes seront ajoutées aux notes actuelles (rien n’est écrasé).',
+    backupCancel: 'Annuler',
+    backupChooseFile: 'Choisir un fichier',
+    backupImportedMsg: '{n} notes importées.',
+    backupImportFailed: 'Impossible de lire le fichier.',
+    backupNoRecords: 'Pas encore de note à sauvegarder.',
+    saveFailed: 'Impossible d’enregistrer.\nVérifie l’espace libre de ton appareil, puis réessaie.',
+    storageUnavailable: 'Ce navigateur n’a pas pu ouvrir l’endroit où tes notes sont enregistrées.\nPour l’instant, elles ne seront pas conservées.\nDésactive la navigation privée ou essaie un autre navigateur.',
   },
   hi: {
     appTitle: '🌿 Soyogi Note',
@@ -560,6 +651,19 @@ const I18N = {
     edit: 'बदलें',
     delete: 'हटाएँ',
     hotlineTrust: 'या किसी भरोसेमंद व्यक्ति से बात करें।',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 बैकअप और ट्रांसफ़र',
+    backupHint: 'बैकअप फ़ाइल को Google Drive या किसी\nमैसेजिंग ऐप में रख लें, तो फ़ोन बदलने पर भी\nरिकॉर्ड वापस लाए जा सकते हैं।',
+    backupExportTitle: 'बैकअप निर्यात करें',
+    backupImportTitle: 'बैकअप से वापस लाएँ',
+    backupImportConfirmMsg: 'बैकअप फ़ाइल चुनें।\nरिकॉर्ड मौजूदा रिकॉर्ड में जुड़ेंगे (मिटेंगे नहीं)।',
+    backupCancel: 'रद्द करें',
+    backupChooseFile: 'फ़ाइल चुनें',
+    backupImportedMsg: '{n} रिकॉर्ड इंपोर्ट हुए।',
+    backupImportFailed: 'फ़ाइल पढ़ी नहीं जा सकी।',
+    backupNoRecords: 'अभी कोई रिकॉर्ड नहीं है।',
+    saveFailed: 'सहेजा नहीं जा सका।\nकृपया डिवाइस में खाली जगह देखकर फिर से कोशिश करें।',
+    storageUnavailable: 'इस ब्राउज़र में आपके रिकॉर्ड रखने की जगह नहीं खुल सकी।\nअभी रिकॉर्ड सहेजे नहीं जाएँगे।\nकृपया प्राइवेट ब्राउज़िंग बंद करें या कोई दूसरा ब्राउज़र आज़माएँ।',
   },
   id: {
     appTitle: '🌿 Soyogi Note',
@@ -629,6 +733,19 @@ const I18N = {
     edit: 'Ubah',
     delete: 'Hapus',
     hotlineTrust: 'Atau bicaralah dengan orang yang kamu percaya.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Cadangan & pindah data',
+    backupHint: 'Simpan berkas cadangan di Google Drive atau\naplikasi pesan, maka catatanmu bisa dipindahkan\nsetelah ganti perangkat.',
+    backupExportTitle: 'Ekspor cadangan',
+    backupImportTitle: 'Impor cadangan',
+    backupImportConfirmMsg: 'Pilih berkas cadangan.\nCatatan akan ditambahkan ke catatan saat ini (tidak menimpa).',
+    backupCancel: 'Batal',
+    backupChooseFile: 'Pilih berkas',
+    backupImportedMsg: '{n} catatan berhasil diimpor.',
+    backupImportFailed: 'Berkas tidak bisa dibaca.',
+    backupNoRecords: 'Belum ada catatan.',
+    saveFailed: 'Gagal menyimpan.\nPeriksa ruang kosong di perangkatmu, lalu coba lagi.',
+    storageUnavailable: 'Browser ini tidak bisa membuka tempat penyimpanan catatanmu.\nUntuk sementara catatan tidak akan tersimpan.\nMatikan mode penjelajahan pribadi atau coba browser lain.',
   },
   it: {
     appTitle: '🌿 Soyogi Note',
@@ -698,6 +815,19 @@ const I18N = {
     edit: 'Modifica',
     delete: 'Elimina',
     hotlineTrust: 'Oppure parla con una persona di cui ti fidi.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Backup e trasferimento',
+    backupHint: 'Conserva il file di backup su Google Drive o\nin un’app di messaggistica: potrai recuperare\nle annotazioni dopo un cambio di telefono.',
+    backupExportTitle: 'Esporta backup',
+    backupImportTitle: 'Importa backup',
+    backupImportConfirmMsg: 'Scegli un file di backup.\nLe annotazioni saranno aggiunte a quelle attuali (nulla verrà sovrascritto).',
+    backupCancel: 'Annulla',
+    backupChooseFile: 'Scegli file',
+    backupImportedMsg: '{n} annotazioni importate.',
+    backupImportFailed: 'Impossibile leggere il file.',
+    backupNoRecords: 'Ancora nessuna annotazione.',
+    saveFailed: 'Salvataggio non riuscito.\nControlla lo spazio libero del dispositivo e riprova.',
+    storageUnavailable: 'Questo browser non è riuscito ad aprire lo spazio in cui sono salvate le tue annotazioni.\nPer ora non verranno conservate.\nDisattiva la navigazione privata o prova un altro browser.',
   },
   ko: {
     appTitle: '🌿 Soyogi Note',
@@ -767,6 +897,19 @@ const I18N = {
     edit: '수정',
     delete: '삭제',
     hotlineTrust: '또는 믿을 수 있는 사람에게 이야기해 보세요.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 백업·이전',
+    backupHint: '백업 파일을 Google Drive나 메신저 앱에\n보관해 두면, 기기를 바꾼 뒤에도\n기록을 이어 갈 수 있어요.',
+    backupExportTitle: '백업 내보내기',
+    backupImportTitle: '백업 가져오기',
+    backupImportConfirmMsg: '백업 파일을 선택해 주세요.\n지금 있는 기록에 더해져요(덮어쓰지 않아요).',
+    backupCancel: '취소',
+    backupChooseFile: '파일 선택',
+    backupImportedMsg: '기록 {n}개를 가져왔어요.',
+    backupImportFailed: '파일을 읽지 못했어요.',
+    backupNoRecords: '아직 기록이 없어요.',
+    saveFailed: '저장하지 못했어요.\n기기의 남은 공간을 확인한 뒤 다시 시도해 주세요.',
+    storageUnavailable: '이 브라우저에서는 기록을 저장하는 곳을 열지 못했어요.\n지금은 기록이 남지 않아요.\n비공개 브라우징을 끄거나 다른 브라우저로 열어 주세요.',
   },
   pt: {
     appTitle: '🌿 Soyogi Note',
@@ -836,6 +979,19 @@ const I18N = {
     edit: 'Editar',
     delete: 'Excluir',
     hotlineTrust: 'Ou converse com alguém de confiança.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Backup e transferência',
+    backupHint: 'Guarde o arquivo no Google Drive ou em um\napp de mensagens e você poderá recuperar\nseus registros ao trocar de aparelho.',
+    backupExportTitle: 'Exportar backup',
+    backupImportTitle: 'Importar backup',
+    backupImportConfirmMsg: 'Escolha um arquivo de backup.\nOs registros serão adicionados aos atuais (nada é sobrescrito).',
+    backupCancel: 'Cancelar',
+    backupChooseFile: 'Escolher arquivo',
+    backupImportedMsg: '{n} registros importados.',
+    backupImportFailed: 'Não foi possível ler o arquivo.',
+    backupNoRecords: 'Ainda não há registros.',
+    saveFailed: 'Não foi possível salvar.\nVerifique o espaço livre do aparelho e tente de novo.',
+    storageUnavailable: 'Este navegador não conseguiu abrir o local onde seus registros ficam salvos.\nPor enquanto, eles não serão guardados.\nDesative a navegação privada ou tente outro navegador.',
   },
   ru: {
     appTitle: '🌿 Soyogi Note',
@@ -905,6 +1061,19 @@ const I18N = {
     edit: 'Изменить',
     delete: 'Удалить',
     hotlineTrust: 'Или поговори с тем, кому доверяешь.',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 Резервная копия и перенос',
+    backupHint: 'Сохрани файл в Google Drive или мессенджере,\nи после смены устройства ты сможешь\nперенести свои записи.',
+    backupExportTitle: 'Экспортировать копию',
+    backupImportTitle: 'Импортировать копию',
+    backupImportConfirmMsg: 'Выбери файл резервной копии.\nЗаписи добавятся к текущим (ничего не перезапишется).',
+    backupCancel: 'Отмена',
+    backupChooseFile: 'Выбрать файл',
+    backupImportedMsg: 'Импортировано записей: {n}.',
+    backupImportFailed: 'Не удалось прочитать файл.',
+    backupNoRecords: 'Записей пока нет.',
+    saveFailed: 'Не удалось сохранить.\nПроверь свободное место на устройстве и попробуй ещё раз.',
+    storageUnavailable: 'В этом браузере не удалось открыть место, где хранятся твои записи.\nСейчас записи не сохраняются.\nВыключи приватный режим или попробуй другой браузер.',
   },
   zh: {
     appTitle: '🌿 Soyogi Note',
@@ -974,6 +1143,19 @@ const I18N = {
     edit: '编辑',
     delete: '删除',
     hotlineTrust: '或者，和你信任的人聊聊。',
+    // ── 2026-10-30 追加（バックアップは Play版の訳をそのまま・保存の失敗・保存場所なし） ──
+    backupScreenTitle: '📦 备份与迁移',
+    backupHint: '把备份文件存到Google云端硬盘或\n聊天软件里，换手机后\n也能继续使用记录。',
+    backupExportTitle: '导出备份',
+    backupImportTitle: '从备份导入',
+    backupImportConfirmMsg: '请选择备份文件。\n记录会添加到现有记录中（不会覆盖）。',
+    backupCancel: '取消',
+    backupChooseFile: '选择文件',
+    backupImportedMsg: '已导入{n}条记录。',
+    backupImportFailed: '无法读取文件。',
+    backupNoRecords: '还没有记录。',
+    saveFailed: '没能保存。\n请确认设备的剩余空间后再试一次。',
+    storageUnavailable: '此浏览器无法打开保存记录的位置。\n现在记录不会被保存。\n请关闭无痕浏览，或换一个浏览器试试。',
   },
 };
 
@@ -988,7 +1170,22 @@ const LANG_ORDER = ['ja','en','ar','bn','de','es','fr','hi','id','it','ko','pt',
 const RTL_LANGS = ['ar'];
 function isRtlLang(code) { return RTL_LANGS.includes(code); }
 
-let lang = localStorage.getItem('soyogi_lang') || 'ja';
+// ===== 保存場所（localStorage）を安全に使う =====
+// Play版の「記録の箱が開けないときも画面は出す」と同じ考え方。
+// 読めない環境（プライベートブラウズ・埋め込み等）では起動を止めず、
+// このとき限りの記録（memRecords）で動かして、ホームで知らせる。
+function lsGet(key) {
+  try { return localStorage.getItem(key); } catch (_) { return null; }
+}
+// 書けたら true。容量いっぱい等で書けなければ false（呼び出し側で知らせる）
+function lsSet(key, val) {
+  try { localStorage.setItem(key, val); return true; } catch (_) { return false; }
+}
+const storageReadable = (() => {
+  try { localStorage.getItem('soyogi_lang'); return true; } catch (_) { return false; }
+})();
+
+let lang = lsGet('soyogi_lang') || 'ja';
 if (!I18N[lang]) lang = 'ja'; // 保存値が未収録言語なら ja に丸める
 function t(key) {
   return I18N[lang][key] ?? I18N.ja[key] ?? '';
@@ -1016,17 +1213,23 @@ function genUuid() {
   return 'r-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
 }
 
+// 保存場所が読めないときだけ使う、このとき限りの記録（ページを閉じると消える）
+let memRecords = storageReadable ? null : [];
+
 function loadRecords() {
+  if (memRecords) return memRecords.slice();
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = lsGet(STORAGE_KEY);
     if (!raw) return [];
     const arr = JSON.parse(raw);
     return Array.isArray(arr) ? arr : [];
   } catch (_) { return []; }
 }
 
+// 保存できたら true。できなければ false（「きろくした」を出さずに知らせる）
 function saveRecords(records) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+  if (memRecords) { memRecords = records.slice(); return true; }
+  return lsSet(STORAGE_KEY, JSON.stringify(records));
 }
 
 function allRecordsSorted() {
@@ -1037,22 +1240,23 @@ function allRecordsSorted() {
 function saveMood(record) {
   const records = loadRecords();
   records.push(record);
-  saveRecords(records);
+  return saveRecords(records);
 }
 
-// 記録の削除
+// 記録の削除（保存できたら true）
 function deleteRecordById(id) {
-  saveRecords(loadRecords().filter(r => r.id !== id));
+  return saveRecords(loadRecords().filter(r => r.id !== id));
 }
 
-// 記録の上書き（編集用）
+// 記録の上書き（編集用・保存できたら true）
 function updateRecordById(id, patch) {
   const records = loadRecords();
   const i = records.findIndex(r => r.id === id);
   if (i >= 0) {
     records[i] = Object.assign({}, records[i], patch);
-    saveRecords(records);
+    return saveRecords(records);
   }
+  return true;
 }
 
 // その日の記録を全件（新しい順）返す
@@ -1136,7 +1340,9 @@ function moodLabel(score) {
 }
 
 // ===== キーワード =====
-const KW_TIER1 = ['死','殺','消えたい','消えてしまいたい','もう無理','助けて','終わりにしたい','生きていたくない','しぬ','しにたい','しのう','自殺','自傷'];
+// 2026-10-30 ヒロさん決定: 1文字の「死」「殺」と「しぬ」は外し、形のある言い方だけにする
+// （「必死に仕事した」「殺到」「死角」「死ぬほどおいしい」で限界ポップアップを出さない・Play版と同じ並び）
+const KW_TIER1 = ['死にたい','死のう','死んでしまいたい','死んだほうが','死んだ方が','死ねたら','死なせて','殺して','殺したい','いなくなりたい','しんでしまいたい','消えたい','消えてしまいたい','もう無理','助けて','終わりにしたい','生きていたくない','しにたい','しのう','自殺','自傷'];
 const KW_TIER2 = ['つらい','辛い','限界','さみしい','寂しい','孤独','ぼっち','毒親','親ガチャ失敗','孤立','絶望','希望がない','誰もわかってくれない'];
 const KW_TIER3 = ['しんどい','だるい','疲れた','つかれた','うんざり','イライラ','いらいら','むかつく','嫌だ','やだ','不安','心配','怖い','悲しい','かなしい','落ち込む','落ち込んだ','ストレス','きつい'];
 const KW_MILD = ['めんどう','めんどくさい','めんどい','ぼーっと','なんとなく','すっきりしない','モヤモヤ','もやもや','どんより','テンション低い','やる気ない','やる気でない',...KW_TIER3];
@@ -1160,6 +1366,15 @@ function matchesEnglish(text, keywords) {
     if (re.test(normalized)) return true;
   }
   return false;
+}
+
+// メモに限界キーワードがあるか（日本語は部分一致、英語は単語境界マッチ）
+function hasCrisisKeyword(memo) {
+  return KW_TIER1.some(w => memo.includes(w)) || matchesEnglish(memo, KW_TIER1_EN);
+}
+// 48時間あいたときの「しんどい」ポップアップは、今回の気分が「しんどい」(3)以下のときだけ
+function shinDoiAfterGap(wasNoRecord48h, score) {
+  return wasNoRecord48h && score != null && score <= 3;
 }
 
 // ===== ホットライン =====
@@ -1244,6 +1459,11 @@ function applyI18n() {
   const ts = $('theme-system'); if (ts) ts.textContent = t('themeSystem');
   const tli = $('theme-light'); if (tli) tli.textContent = t('themeLight');
   const td = $('theme-dark'); if (td) td.textContent = t('themeDark');
+  // バックアップ・引き継ぎ（Play版の文言）
+  $('backup-title').textContent = t('backupScreenTitle');
+  $('backup-hint').textContent = t('backupHint');
+  $('backup-export').textContent = t('backupExportTitle');
+  $('backup-import').textContent = t('backupImportTitle');
   // 再描画
   if (currentView === 'calendar') renderCalendar();
 }
@@ -1292,7 +1512,7 @@ function updateMoodUI() {
 }
 
 // ===== 大きめ文字（CSSクラス切替＋localStorage保存） =====
-let bigFont = localStorage.getItem('soyogi_big_font') === '1';
+let bigFont = lsGet('soyogi_big_font') === '1';
 function applyBigFont() {
   const app = document.getElementById('app');
   if (app) app.classList.toggle('big-font', bigFont);
@@ -1303,7 +1523,7 @@ function applyBigFont() {
 // ===== ダークモード（深夜モード）=====
 // 'system'（端末にあわせる・既定）/ 'light' / 'dark' を body クラスで切替。
 // prefers-color-scheme: dark を既定にしつつ、明示選択で上書きできる。
-let themePref = localStorage.getItem('soyogi_theme') || 'system';
+let themePref = lsGet('soyogi_theme') || 'system';
 function resolvedDark() {
   if (themePref === 'dark') return true;
   if (themePref === 'light') return false;
@@ -1334,7 +1554,7 @@ async function handleSave() {
 
   const memoRaw = $('memo-input').value;
   // 日本語は部分一致、英語は単語境界マッチ。両リストを常時チェックする。
-  const hasTier1 = KW_TIER1.some(w => memoRaw.includes(w)) || matchesEnglish(memoRaw, KW_TIER1_EN);
+  const hasTier1 = hasCrisisKeyword(memoRaw);
   const hasTier2 = !hasTier1 && (KW_TIER2.some(w => memoRaw.includes(w)) || matchesEnglish(memoRaw, KW_TIER2_EN));
   const hasTier3 = !hasTier1 && !hasTier2 && (KW_TIER3.some(w => memoRaw.includes(w)) || matchesEnglish(memoRaw, KW_TIER3_EN));
 
@@ -1349,7 +1569,12 @@ async function handleSave() {
     memo: memo.length ? memo : null,
     createdAt: now.toISOString(),
   };
-  saveMood(record);
+  // 保存に失敗したら「きろくした」を出さず、その場で知らせる（書いたメモは欄に残す）
+  if (!saveMood(record)) {
+    showToast(t('saveFailed'));
+    return;
+  }
+  announce(t('recordedLabel'));
 
   // 完了画面表示
   $('record-mode').style.display = 'none';
@@ -1372,9 +1597,10 @@ async function handleSave() {
     (selectedScore === 2 && prevScores.length >= 1 && prevScores[0] === 2) ||
     hasTier2
   );
+  // 48h無記録は、今回えらんだ気分が「しんどい」(3)以下のときだけ（2026-10-30 ヒロさん決定・Play版と同じ）
   const isShinDoi = !isCrisis && !isTsurai && (
     (selectedScore === 3 && prevScores.length >= 2 && prevScores[0] === 3 && prevScores[1] === 3) ||
-    wasNoRecord48h || hasTier3
+    shinDoiAfterGap(wasNoRecord48h, selectedScore) || hasTier3
   );
   const mildTrigger = !isCrisis && !isTsurai && !isShinDoi && (
     noGreatMoodIn10Days() || hasNegativeTrend10Days(KW_MILD, KW_TIER3_EN)
@@ -1682,7 +1908,10 @@ function confirmDelete(id) {
       {
         label: t('deleteYes'),
         kind: 'primary',
-        onClick: () => { deleteRecordById(id); renderCalendar(); },
+        onClick: () => {
+          if (!deleteRecordById(id)) showToast(t('saveFailed'));
+          renderCalendar();
+        },
       },
     ],
   });
@@ -1722,7 +1951,11 @@ function saveEdit() {
   if (!editingId) return;
   const memo = $('edit-memo').value.trim();
   if (editSelectedScore == null && memo.length === 0) { closeEditModal(); return; }
-  updateRecordById(editingId, { score: editSelectedScore, memo: memo.length ? memo : null });
+  // 保存に失敗したら窓を閉じず、その場で知らせる（入力は残す）
+  if (!updateRecordById(editingId, { score: editSelectedScore, memo: memo.length ? memo : null })) {
+    showToast(t('saveFailed'));
+    return;
+  }
   closeEditModal();
   renderCalendar();
 }
@@ -1833,12 +2066,117 @@ function stopBreathing() {
   resetBall();
 }
 
+// ===== 知らせ（toast）・読み上げ =====
+// 保存の失敗やバックアップの結果を出す。role="status" なので読み上げソフトにも伝わる。
+let toastTimer = null;
+function showToast(msg) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 4000);
+}
+// 見た目はそのままで、読み上げソフトにだけ伝える（「きろくした！」など）
+function announce(msg) {
+  const el = $('sr-status');
+  el.textContent = '';
+  setTimeout(() => { el.textContent = msg; }, 50);
+}
+
+// ===== バックアップ・引き継ぎ（Play版 backup_screen.dart と同じ形） =====
+// 書き出し: [{id, date, score, memo('' = なし), createdAt}] の JSON（Play版と相互に読める）。
+// 読み込み: 確かめの窓 → ファイルを選ぶ → 全件の形を確かめてから、同じIDが無いものだけ追加。
+//           1件でも形が合わなければ何も変えずに「読み込みに失敗」と出す。
+function exportBackup() {
+  const records = allRecordsSorted();
+  if (records.length === 0) { showToast(t('backupNoRecords')); return; }
+  const data = JSON.stringify(records.map(r => ({
+    id: r.id,
+    date: r.date,
+    score: r.score ?? null,
+    memo: r.memo || '',
+    createdAt: r.createdAt || r.date,
+  })));
+  const d = new Date();
+  const name = `soyogi_backup_${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}.json`;
+  const url = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function confirmImport() {
+  openModal({
+    message: t('backupImportConfirmMsg'),
+    actions: [
+      { label: t('backupCancel'), kind: 'text' },
+      { label: t('backupChooseFile'), kind: 'primary', onClick: () => $('backup-file').click() },
+    ],
+  });
+}
+
+// ファイルの中身を確かめて、記録の配列にする（形が合わなければ例外）
+function parseBackup(text) {
+  const list = JSON.parse(text);
+  if (!Array.isArray(list)) throw new Error('not a list');
+  const validDate = (v) => typeof v === 'string' && !isNaN(new Date(v).getTime());
+  return list.map((item) => {
+    if (!item || typeof item !== 'object') throw new Error('bad item');
+    const { id, date, score, memo, createdAt } = item;
+    if (typeof id !== 'string' || id === '') throw new Error('bad id');
+    if (!validDate(date) || !validDate(createdAt)) throw new Error('bad date');
+    if (!(score == null || (Number.isInteger(score) && score >= 1 && score <= 5))) throw new Error('bad score');
+    if (!(memo == null || typeof memo === 'string')) throw new Error('bad memo');
+    return {
+      id,
+      date: new Date(date).toISOString(),
+      score: score ?? null,
+      memo: memo ? memo : null,
+      createdAt: new Date(createdAt).toISOString(),
+    };
+  });
+}
+
+function importBackupFile(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    let incoming;
+    try {
+      incoming = parseBackup(String(reader.result));
+    } catch (_) {
+      showToast(t('backupImportFailed'));
+      return;
+    }
+    const records = loadRecords();
+    const ids = new Set(records.map(r => r.id));
+    let count = 0;
+    for (const r of incoming) {
+      if (ids.has(r.id)) continue; // 同じIDがあれば追加しない（Play版と同じ）
+      ids.add(r.id);
+      records.push(r);
+      count++;
+    }
+    if (count > 0 && !saveRecords(records)) {
+      showToast(t('saveFailed'));
+      return;
+    }
+    showToast(t('backupImportedMsg').replace('{n}', String(count)));
+    if (currentView === 'calendar') renderCalendar();
+  };
+  reader.onerror = () => showToast(t('backupImportFailed'));
+  reader.readAsText(file);
+}
+
 // ===== イベント登録 =====
 function bindEvents() {
   // 言語チップ
   $$('.lang-chip').forEach(el => el.addEventListener('click', () => {
     lang = el.dataset.lang;
-    localStorage.setItem('soyogi_lang', lang);
+    lsSet('soyogi_lang', lang);
     applyI18n();
   }));
   // 気分セレクター（ホームのみ・編集モーダルの.mood-optionには効かせない）
@@ -1859,6 +2197,21 @@ function bindEvents() {
   $('nav-note').addEventListener('click', () => window.open('https://note.com/soudan_soyogi', '_blank', 'noopener'));
   $('nav-art').addEventListener('click', () => window.open('https://maimartprojectcatalog.com/', '_blank', 'noopener'));
   $('soyogi-link').addEventListener('click', () => window.open('https://soudansoyogi.com/', '_blank', 'noopener'));
+  // キーボード・スイッチ操作でも開けるように（Enter / Space）
+  $('soyogi-link').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      window.open('https://soudansoyogi.com/', '_blank', 'noopener');
+    }
+  });
+  // バックアップ・引き継ぎ
+  $('backup-export').addEventListener('click', exportBackup);
+  $('backup-import').addEventListener('click', confirmImport);
+  $('backup-file').addEventListener('change', (e) => {
+    const f = e.target.files && e.target.files[0];
+    e.target.value = ''; // 同じファイルをもう一度選べるように
+    if (f) importBackupFile(f);
+  });
   // カレンダー操作
   $('cal-prev').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() - 1); renderCalendar(); });
   $('cal-next').addEventListener('click', () => { calFocused.setMonth(calFocused.getMonth() + 1); renderCalendar(); });
@@ -1880,13 +2233,13 @@ function bindEvents() {
   // 大きめ文字トグル
   $('bigfont-toggle').addEventListener('change', (e) => {
     bigFont = e.target.checked;
-    localStorage.setItem('soyogi_big_font', bigFont ? '1' : '0');
+    lsSet('soyogi_big_font', bigFont ? '1' : '0');
     applyBigFont();
   });
   // ダークモード（端末にあわせる／ライト／ダーク）
   $$('.theme-seg-btn').forEach(el => el.addEventListener('click', () => {
     themePref = el.dataset.theme;
-    localStorage.setItem('soyogi_theme', themePref);
+    lsSet('soyogi_theme', themePref);
     applyTheme();
   }));
   // 「端末にあわせる」選択中は端末のダーク切替に追従
@@ -1916,6 +2269,10 @@ function init() {
   applyBigFont();
   updateMoodUI();
   updateSaveDisabled();
+  // 保存場所が読めない環境では、画面は出したうえで知らせる（このとき限りの記録で動く）
+  if (!storageReadable) {
+    setTimeout(() => openModal({ message: t('storageUnavailable'), actions: [{ label: t('modalClose'), kind: 'text' }] }), 400);
+  }
   // 7日以上前の記録時の「おかえり」
   const records = allRecordsSorted();
   if (records.length > 0) {
@@ -1924,7 +2281,7 @@ function init() {
       setTimeout(showWelcomeBack, 400);
     }
   }
-  localStorage.setItem(FIRST_LAUNCH_KEY, 'true');
+  lsSet(FIRST_LAUNCH_KEY, 'true');
 }
 
 document.addEventListener('DOMContentLoaded', init);

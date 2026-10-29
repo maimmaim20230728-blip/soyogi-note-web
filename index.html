@@ -130,8 +130,20 @@
         </div>
       </div>
 
+      <!-- バックアップ・引き継ぎ（Play版と同じ形のJSON。読み込みは確かめてから、いまの記録に追加） -->
       <div class="divider"></div>
-      <div class="footer-link" id="soyogi-link">困ったときは → そよぎに話してみる 🌿</div>
+      <div class="setting-block backup-block">
+        <span class="setting-label" id="backup-title">📦 バックアップ・引き継ぎ</span>
+        <div class="backup-hint" id="backup-hint"></div>
+        <div class="backup-btns">
+          <button class="btn-outline" id="backup-export">バックアップを書き出す</button>
+          <button class="btn-outline" id="backup-import">バックアップから引き継ぐ</button>
+        </div>
+        <input type="file" id="backup-file" accept=".json,application/json" hidden>
+      </div>
+
+      <div class="divider"></div>
+      <div class="footer-link" id="soyogi-link" role="link" tabindex="0">困ったときは → そよぎに話してみる 🌿</div>
     </section>
 
     <!-- ===== カレンダー画面 ===== -->
@@ -233,6 +245,11 @@
         </div>
       </div>
     </div>
+
+    <!-- 知らせ（保存の失敗・バックアップの結果）。読み上げソフトにも伝える -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <!-- 見えない読み上げ用（「きろくした！」を読み上げソフトに伝える） -->
+    <div class="sr-only" id="sr-status" role="status" aria-live="polite"></div>
 
   </div>
   <script src="app.js"></script>

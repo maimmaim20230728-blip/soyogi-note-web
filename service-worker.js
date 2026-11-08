@@ -1,5 +1,5 @@
 ﻿// そよぎノート - Service Worker
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 const CACHE_NAME = `soyogi-note-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
